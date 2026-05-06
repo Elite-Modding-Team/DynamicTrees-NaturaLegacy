@@ -28,11 +28,15 @@ minecraft {
 
 repositories {
     maven {
+        url 'https://maven.cleanroommc.com'
+    }
+    maven {
         url 'https://curse.cleanroommc.com'
     }
 }
 
 dependencies {
+    runtimeOnly 'com.cleanroommc:strip-latest-forge-requirements:1.0'
     implementation 'curse.maven:dynamictrees-252818:3812473'
     implementation 'curse.maven:mantle-74924:2713386'
     implementation 'curse.maven:natura-legacy-1116420:8048446'
