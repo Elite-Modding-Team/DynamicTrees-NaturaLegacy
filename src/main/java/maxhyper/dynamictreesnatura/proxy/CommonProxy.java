@@ -31,6 +31,7 @@ public class CommonProxy {
 			Config.generateEucalyptus = false;
 			Config.generateHopseed = false;
 			Config.generateSakura = false;
+			Config.generateApple = false;
 			Config.generateBloodwood = false;
 			Config.generateDarkwood = false;
 			Config.generateFusewood = false;

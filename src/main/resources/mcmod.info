@@ -1,16 +1,11 @@
 [
-{
-  "modid": "dynamictreesnatura",
-  "name": "Dynamic Trees for Natura",
-  "description": "Adds compatibilities between dynamic trees and Natura",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-natura",
-  "updateUrl": "https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-Natura/version_info.json?raw=true",
-  "authorList": ["Max Hyper"],
-  "credits": "",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "dynamictreesnatura",
+    "name": "Dynamic Trees for Natura Legacy",
+    "description": "Adds compatibilities between Dynamic Trees and Natura Legacy",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-natura-legacy",
+    "authorList": ["Max Hyper", "ACGaming"]
+  }
 ]

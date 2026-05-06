@@ -10,6 +10,7 @@
           "dynamictreesnatura:maple" : 10,
           "dynamictreesnatura:silverbell" : 1,
           "dynamictreesnatura:tigerwood" : 3,
+          "dynamictreesnatura:apple" : 3,
           "..." : 1000
         }
       }
@@ -22,6 +23,7 @@
         "method" : "before",
         "random" : {
           "dynamictreesnatura:eucalyptus" : 1,
+          "dynamictreesnatura:apple" : 1,
           "..." : 20
         }
       }

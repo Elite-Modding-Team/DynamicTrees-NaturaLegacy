@@ -27,6 +27,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.statemap.StateMap;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -57,7 +58,7 @@ import java.util.Collections;
 @ObjectHolder(DynamicTreesNatura.MODID)
 public class ModContent {
 
-	public static BlockDynamicLeaves darkwoodLeaves, bloodwoodLeaves;
+	public static BlockDynamicLeaves appleLeaves, darkwoodLeaves, bloodwoodLeaves;
 	public static BlockBranch bloodwoodBranch, fusewoodBranch;
 	public static BlockDynamicSapling bloodwoodSapling;
 	public static Seed bloodwoodSeed, mapleSeed, hopseedSeed, fusewoodSeed;
@@ -66,7 +67,8 @@ public class ModContent {
 	public static ILeavesProperties mapleLeavesProperties, silverbellLeavesProperties, amaranthLeavesProperties, tigerwoodLeavesProperties,
 			willowLeavesProperties, eucalyptusLeavesProperties, hopseedLeavesProperties, sakuraLeavesProperties,
 			ghostwoodLeavesProperties, bloodwoodLeavesProperties, fusewoodLeavesProperties,
-			darkwoodLeavesProperties, darkwoodFloweringLeavesProperties, darkwoodFruitLeavesProperties, cactusLeavesProperties;
+			darkwoodLeavesProperties, darkwoodFloweringLeavesProperties, darkwoodFruitLeavesProperties, cactusLeavesProperties,
+			appleLeavesProperties, appleFloweringLeavesProperties, appleFruitLeavesProperties, appleGoldenFruitLeavesProperties;
 
 	public static CactusSaguaro saguaroCactus;
 
@@ -92,7 +94,10 @@ public class ModContent {
 
 		bloodwoodBranch = new BlockDynamicBranchBloodwood();
 		fusewoodBranch = new BlockDynamicBranchFusewood();
-		
+
+		appleLeaves = new BlockDynamicLeavesApple();
+		registry.register(appleLeaves);
+
 		darkwoodLeaves = new BlockDynamicLeavesDarkwood();
 		registry.register(darkwoodLeaves);
 		bloodwoodLeaves = new BlockDynamicLeavesBloodwood();
@@ -130,6 +135,11 @@ public class ModContent {
 		hopseedLeavesProperties = setUpLeaves(TreeHopseed.leavesBlock, TreeHopseed.leavesState, "deciduous");
 		sakuraLeavesProperties = setUpLeaves(TreeSakura.leavesBlock, TreeSakura.leavesState, "deciduous");
 
+		appleLeavesProperties = setUpLeaves(TreeApple.leavesBlock, TreeApple.leavesState, "deciduous");
+		appleFloweringLeavesProperties = setUpLeaves(TreeApple.leavesBlock, TreeApple.leavesState, "deciduous");
+		appleFruitLeavesProperties = setUpLeaves(TreeApple.leavesBlock, TreeApple.leavesState, "deciduous");
+		appleGoldenFruitLeavesProperties = setUpLeaves(TreeApple.leavesBlock, TreeApple.leavesState, "deciduous");
+
 		ghostwoodLeavesProperties = setUpLeavesNether(TreeGhostwood.leavesBlock, TreeGhostwood.leavesState, "deciduous");
 		bloodwoodLeavesProperties = setUpLeavesNether(TreeBloodwood.leavesBlock, TreeBloodwood.leavesState, "bloodwood");
 		fusewoodLeavesProperties = setUpLeavesNether(TreeFusewood.leavesBlock, TreeFusewood.leavesState, "deciduous");
@@ -153,6 +163,15 @@ public class ModContent {
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 9, bloodwoodLeavesProperties);
 		LeavesPaging.getLeavesBlockForSequence(DynamicTreesNatura.MODID, 10, fusewoodLeavesProperties);
 
+		appleLeavesProperties.setDynamicLeavesState(appleLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
+		appleFloweringLeavesProperties.setDynamicLeavesState(appleLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
+		appleFruitLeavesProperties.setDynamicLeavesState(appleLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 2));
+		appleGoldenFruitLeavesProperties.setDynamicLeavesState(appleLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 3));
+		appleLeaves.setProperties(0, appleLeavesProperties);
+		appleLeaves.setProperties(1, appleFloweringLeavesProperties);
+		appleLeaves.setProperties(2, appleFruitLeavesProperties);
+		appleLeaves.setProperties(3, appleGoldenFruitLeavesProperties);
+
 		darkwoodLeavesProperties.setDynamicLeavesState(darkwoodLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 0));
 		darkwoodFloweringLeavesProperties.setDynamicLeavesState(darkwoodLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 1));
 		darkwoodFruitLeavesProperties.setDynamicLeavesState(darkwoodLeaves.getDefaultState().withProperty(BlockDynamicLeaves.TREE, 2));
@@ -171,6 +190,7 @@ public class ModContent {
 		TreeFamily eucalyptusTree = new TreeEucalyptus();
 		TreeFamily hopseedTree = new TreeHopseed();
 		TreeFamily sakuraTree = new TreeSakura();
+		TreeFamily appleTree = new TreeApple();
 		TreeFamily ghostwoodTree = new TreeGhostwood();
 		TreeFamily bloodwoodTree = new TreeBloodwood();
 		TreeFamily fusewoodTree = new TreeFusewood();
@@ -179,7 +199,7 @@ public class ModContent {
 		saguaroCactus = new CactusSaguaro();
 		saguaroCactus.registerSpecies(Species.REGISTRY);
 
-		Collections.addAll(trees, mapleTree, silverbellTree, amaranthTree, tigerwoodTree, willowTree, eucalyptusTree, hopseedTree, sakuraTree, ghostwoodTree, bloodwoodTree, fusewoodTree, darkwoodTree);
+		Collections.addAll(trees, mapleTree, silverbellTree, amaranthTree, tigerwoodTree, willowTree, eucalyptusTree, hopseedTree, sakuraTree, appleTree, ghostwoodTree, bloodwoodTree, fusewoodTree, darkwoodTree);
 
 		trees.forEach(tree -> tree.registerSpecies(Species.REGISTRY));
 
@@ -271,6 +291,7 @@ public class ModContent {
 		setUpSeedRecipes("eucalyptus", new ItemStack(TreeEucalyptus.saplingBlock, 1, 1));
 		setUpSeedRecipes("hopseed", new ItemStack(TreeHopseed.saplingBlock, 1, 2));
 		setUpSeedRecipes("sakura", new ItemStack(TreeSakura.saplingBlock, 1, 3));
+		setUpSeedRecipes("apple", new ItemStack(TreeApple.saplingBlock));
 		setUpSeedRecipes("ghostwood", new ItemStack(TreeGhostwood.saplingBlock, 1, 0));
 		setUpSeedRecipes("bloodwood", new ItemStack(TreeBloodwood.saplingBlock, 1, 0));
 		setUpSeedRecipes("fusewood", new ItemStack(TreeFusewood.saplingBlock, 1, 1));
@@ -305,6 +326,7 @@ public class ModContent {
 		ModelLoader.setCustomStateMapper(rootyNetherUpsidedownDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(rootyUpsidedownDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
 		ModelLoader.setCustomStateMapper(rootyNetherDirt, new StateMap.Builder().ignore(BlockRooty.LIFE).build());
+		ModelLoader.setCustomStateMapper(appleLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		ModelLoader.setCustomStateMapper(darkwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 		ModelLoader.setCustomStateMapper(bloodwoodLeaves, new StateMap.Builder().ignore(BlockLeaves.DECAYABLE).build());
 
