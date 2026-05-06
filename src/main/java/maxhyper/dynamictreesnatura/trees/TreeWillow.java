@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog2;
 import maxhyper.dynamictreesnatura.ModContent;
@@ -16,6 +17,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -121,6 +123,7 @@ public class TreeWillow extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.willow_stick;
 		stick.setCount(qty);
 		return stick;

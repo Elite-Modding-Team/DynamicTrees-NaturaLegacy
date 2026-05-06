@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranchBasic;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog;
 import com.progwml6.natura.shared.NaturaCommons;
@@ -13,6 +14,7 @@ import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -78,6 +80,7 @@ public class TreeSilverbell extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.silverbell_stick;
 		stick.setCount(qty);
 		return stick;

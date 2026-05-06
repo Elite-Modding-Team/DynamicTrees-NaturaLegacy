@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockBranch;
 import com.ferreusveritas.dynamictrees.blocks.BlockBranchThick;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.overworld.NaturaOverworld;
 import com.progwml6.natura.overworld.block.logs.BlockOverworldLog2;
 import com.progwml6.natura.shared.NaturaCommons;
@@ -12,6 +13,7 @@ import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -66,6 +68,7 @@ public class TreeHopseed extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.hopseed_stick;
 		stick.setCount(qty);
 		return stick;

@@ -8,6 +8,7 @@ import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.nether.block.logs.BlockNetherLog;
@@ -17,6 +18,7 @@ import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -95,6 +97,7 @@ public class TreeGhostwood extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.ghostwood_stick;
 		stick.setCount(qty);
 		return stick;

@@ -5,6 +5,7 @@ import com.ferreusveritas.dynamictrees.blocks.BlockRooty;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.nether.block.leaves.BlockNetherLeaves;
 import com.progwml6.natura.nether.block.logs.BlockNetherLog;
@@ -13,6 +14,7 @@ import maxhyper.dynamictreesnatura.DynamicTreesNatura;
 import maxhyper.dynamictreesnatura.ModContent;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -77,6 +79,7 @@ public class TreeFusewood extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.fusewood_stick;
 		stick.setCount(qty);
 		return stick;

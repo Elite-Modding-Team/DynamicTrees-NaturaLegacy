@@ -10,6 +10,7 @@ import com.ferreusveritas.dynamictrees.systems.DirtHelper;
 import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
+import com.progwml6.natura.common.config.Config;
 import com.progwml6.natura.nether.NaturaNether;
 import com.progwml6.natura.nether.block.logs.BlockNetherLog;
 import com.progwml6.natura.shared.NaturaCommons;
@@ -20,6 +21,7 @@ import maxhyper.dynamictreesnatura.genfeatures.FeatureGenFruitLeaves;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -120,6 +122,7 @@ public class TreeDarkwood extends TreeFamily {
 	}
 	@Override
 	public ItemStack getStick(int qty) {
+		if (!Config.enableStickVariants) return new ItemStack(Items.STICK, qty);
 		ItemStack stick = NaturaCommons.darkwood_stick;
 		stick.setCount(qty);
 		return stick;
