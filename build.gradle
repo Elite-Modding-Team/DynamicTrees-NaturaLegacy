@@ -34,6 +34,8 @@ repositories {
 
 dependencies {
     implementation 'curse.maven:dynamictrees-252818:3812473'
+    implementation 'curse.maven:mantle-74924:2713386'
+    implementation 'curse.maven:natura-legacy-1116420:7571611'
 }
 
 processResources {
