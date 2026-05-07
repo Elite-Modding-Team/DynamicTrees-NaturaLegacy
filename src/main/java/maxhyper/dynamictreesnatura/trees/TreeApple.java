@@ -21,7 +21,6 @@ import com.ferreusveritas.dynamictrees.systems.featuregen.FeatureGenFruit;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.TreeFamily;
 import com.progwml6.natura.overworld.NaturaOverworld;
-import com.progwml6.natura.overworld.block.leaves.BlockAppleLeaves;
 import com.progwml6.natura.overworld.block.logs.BlockAppleLog;
 import java.util.List;
 import maxhyper.dynamictreesnatura.DynamicTreesNatura;
@@ -35,7 +34,7 @@ public class TreeApple extends TreeFamily {
 	public static Block leavesBlock = NaturaOverworld.appleLeaves;
     public static Block logBlock = NaturaOverworld.appleLog;
     public static Block saplingBlock = NaturaOverworld.appleSapling;
-	public static IBlockState leavesState = leavesBlock.getDefaultState().withProperty(BlockAppleLeaves.TYPE, BlockAppleLeaves.LeavesType.NORMAL);
+	public static IBlockState leavesState = leavesBlock.getDefaultState();
 
 	public class SpeciesApple extends Species {
 
@@ -77,6 +76,9 @@ public class TreeApple extends TreeFamily {
 		setPrimitiveLog(logBlock.getDefaultState().withProperty(BlockAppleLog.TYPE, BlockAppleLog.LogType.APPLE));
 
 		ModContent.appleLeavesProperties.setTree(this);
+		ModContent.appleFloweringLeavesProperties.setTree(this);
+		ModContent.appleFruitLeavesProperties.setTree(this);
+		ModContent.appleGoldenFruitLeavesProperties.setTree(this);
 
 		addConnectableVanillaLeaves((state) -> state.getBlock() == leavesBlock);
 	}
