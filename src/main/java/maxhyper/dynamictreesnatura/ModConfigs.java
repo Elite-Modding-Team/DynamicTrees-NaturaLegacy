@@ -1,6 +1,10 @@
 package maxhyper.dynamictreesnatura;
 
 import net.minecraftforge.common.config.Config;
+import net.minecraftforge.common.config.ConfigManager;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Config(modid = DynamicTreesNatura.MODID)
 public class ModConfigs {
@@ -14,4 +18,13 @@ public class ModConfigs {
     @Config.Name("Pick Fruit From Leaves")
     public static boolean pickFruitFromLeaves = true;
 
+    @Mod.EventBusSubscriber(modid = DynamicTreesNatura.MODID)
+    public static class EventHandler {
+        @SubscribeEvent
+        public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+            if (event.getModID().equals(DynamicTreesNatura.MODID)) {
+                ConfigManager.sync(DynamicTreesNatura.MODID, Config.Type.INSTANCE);
+            }
+        }
+    }
 }
