@@ -1,7 +1,7 @@
 {   "parent": "block/block",
     "textures": {
         "particle": "natura:blocks/leaves/nether/bloodwood_leaves",
-        "log": "natura:blocks/logs/nether/bloodwood_bark",
+        "log": "natura:blocks/logs/nether/bloodwood_log",
         "leaves": "natura:blocks/leaves/nether/bloodwood_leaves"
     },
     "display": {
